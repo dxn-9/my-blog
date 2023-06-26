@@ -1,8 +1,13 @@
 import React from 'react'
-import { getPostBySlug } from '@/utils/posts'
+import { getPostBySlug, getPosts } from '@/utils/posts'
 import x from '@/posts/hi.mdx'
 import Link from 'next/link'
 import PostHeading from '@/components/PostHeading'
+
+export async function generateStaticParams() {
+	const posts = await getPosts()
+	return posts.map((post) => ({ slug: post.metaData.slug }))
+}
 
 export default async function Post({ params }: { params: { slug: string } }) {
 	const Post = await getPostBySlug(params.slug)
