@@ -11,9 +11,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang='en'>
 			<body>
-				<Navbar />
-				<main>{children}</main>
-				<footer className='w-full h-20 mt-52 bg-gray-700'>footer yo</footer>
+				<main className='flex justify-center mx-auto min-h-[calc(100vh-11rem)] mt-44'>
+					<Navbar />
+					<div className='max-w-[80ch] w-full  flex flex-col relative '>
+						{children}
+					</div>
+				</main>
+				<footer className='w-full h-20 mt-24 bg-gray-700'>footer yo</footer>
 			</body>
 		</html>
 	)

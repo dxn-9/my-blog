@@ -1,10 +1,12 @@
+import { MDXProps } from 'mdx/types'
+
 export default interface Post {
-	default: JSX.Element
+	default: (props: MDXProps) => JSX.Element
 	metaData: {
 		title: string
 		description: string
-		date: Date
+		date: string
 		slug: string
-		image?: string
+		updated?: string
 	}
 }
