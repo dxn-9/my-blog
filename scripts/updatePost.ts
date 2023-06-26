@@ -1,6 +1,7 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
 
+// this can probably be done in ci
 async function main() {
 	if (process.argv.length !== 3) {
 		throw new Error('Invalid args')
@@ -32,6 +33,10 @@ async function main() {
 	} else if (command === 'sign') {
 		const content = (await fs.readFile(p)) as Buffer
 		const fileContents = content.toString()
+		const hasBeenSigned = fileContents.match(/date:(.*),/gm)
+		if (hasBeenSigned) {
+			throw new Error('Already signed!')
+		}
 		const newContents = fileContents.replace(/description:.*,/gm, (prev) => {
 			return `${prev}\n\tdate: '${new Date().toISOString()}',`
 		})
