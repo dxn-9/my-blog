@@ -1,13 +1,13 @@
-import { getPostBySlug, getPosts } from '@/utils/posts'
-import { formatTitle, formatDateShort } from '@/utils/utils'
+import { getPostBySlug, getPosts } from '@/lib/posts'
+import { formatTitle, formatDateShort } from '@/lib/utils'
 import Link from 'next/link'
 
 export default async function Home() {
 	const posts = await getPosts()
-	const post = await getPostBySlug('hi')
 	return (
 		<>
 			<h1 className='font-bold text-4xl'>I miei ultimi posts</h1>
+
 			<section>
 				<ul>
 					{posts.map((post) => (

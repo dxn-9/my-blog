@@ -1,5 +1,5 @@
 import Post from '@/types/post'
-import { formatDateLong } from '@/utils/utils'
+import { formatDateLong } from '@/lib/utils'
 import React from 'react'
 export default function PostHeading({ post }: { post: Post }) {
 	const hasBeenUpdated =

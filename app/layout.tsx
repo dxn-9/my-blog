@@ -1,6 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/navbar'
+import React from 'react'
+import { getPosts } from '@/lib/posts'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata = {
 	title: 'Create Next App',
@@ -11,13 +14,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang='en'>
 			<body>
-				<main className='flex justify-center mx-auto min-h-[calc(100vh-11rem)] mt-44'>
-					<Navbar />
-					<div className='max-w-[80ch] w-full  flex flex-col relative '>
-						{children}
-					</div>
-				</main>
-				<footer className='w-full h-20 mt-24 bg-gray-700'>footer yo</footer>
+				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
+					<main className='flex justify-center mx-auto min-h-[calc(100vh-11rem)] mt-44'>
+						<Navbar />
+						<div className='max-w-[80ch] w-full  flex flex-col relative '>
+							{children}
+						</div>
+					</main>
+					<footer className='w-full h-20 mt-24 bg-gray-700'>footer yo</footer>
+				</ThemeProvider>
 			</body>
 		</html>
 	)

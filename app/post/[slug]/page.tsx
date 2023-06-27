@@ -1,8 +1,8 @@
 import React from 'react'
-import { getPostBySlug, getPosts } from '@/utils/posts'
+import { getPostBySlug, getPosts } from '@/lib/posts'
 import x from '@/posts/hi.mdx'
 import Link from 'next/link'
-import PostHeading from '@/components/PostHeading'
+import PostHeading from '@/components/post-heading'
 
 export async function generateStaticParams() {
 	const posts = await getPosts()
