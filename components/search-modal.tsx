@@ -20,6 +20,7 @@ import Fuse from 'fuse.js'
 import { Result } from 'postcss'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { Button } from './ui/button'
 export default function SearchModal({
 	postsMeta,
 }: {
@@ -53,8 +54,10 @@ export default function SearchModal({
 	return (
 		<div>
 			<Dialog open={open} onOpenChange={setOpen}>
-				<DialogTrigger>
-					<Search />
+				<DialogTrigger asChild>
+					<Button variant='outline' size='icon'>
+						<Search />
+					</Button>
 				</DialogTrigger>
 				<DialogContent className='overflow-hidden p-0 shadow-lg'>
 					<Command

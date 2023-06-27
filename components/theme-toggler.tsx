@@ -11,9 +11,10 @@ export default function ThemeToggler() {
 			<Button
 				variant='outline'
 				size='icon'
-				className='relative z-10'
+				className='relative z-10 overflow-hidden'
 				onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-				<MoonStar className='absolute w-6 h-6 top-1/2 left-1/2 translate-x-[-50%]  transition-all  dark:[--theme-icon-offset:10px] [--theme-icon-offset:0px] translate-y-[50%+var(--theme-icon-offset)] ' />
+				<MoonStar className='absolute w-6 h-6 top-1/2 left-1/2 translate-x-[-50%]  transition-all  dark:[--theme-icon-offset:0px] [--theme-icon-offset:2.5rem] translate-y-[calc(-50%+var(--theme-icon-offset))] ' />
+				<Sun className='absolute w-6 h-6 top-1/2 left-1/2 translate-x-[-50%]  transition-all  dark:[--theme-icon-offset:2.5rem] [--theme-icon-offset:-0px] translate-y-[calc(-50%+var(--theme-icon-offset))] ' />
 				{/* <Sun className='absolute w-5 h-5' /> */}
 			</Button>
 		</>
