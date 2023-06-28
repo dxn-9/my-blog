@@ -49,7 +49,7 @@ export default function Navbar({
 					)}>
 					<button
 						onClick={() => setIsOpen((p) => !p)}
-						className='h-12 w-12 mx-auto relative bg-transparent after:content-[""] after:group-data-[state="open"]:rotate-45 after:group-data-[state="closed"]:rotate-0 after:absolute after:inset-0 after:bg-background after:border after:border-input after:hover:bg-accent after:hover:text-accent-foreground after:rounded-sm after:transition-all after:ring-offset-background after:focus-visible:outline-none'>
+						className='h-12 w-12 select-none mx-auto relative bg-transparent after:content-[""] after:group-data-[state="open"]:rotate-45 after:group-data-[state="closed"]:rotate-0 after:absolute after:inset-0 after:bg-background after:border after:border-input after:hover:bg-accent after:hover:text-accent-foreground after:rounded-sm after:transition-all after:ring-offset-background after:focus-visible:outline-none'>
 						<h2 className='z-10 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transition-all font-bold text-2xl'>
 							DL
 						</h2>
