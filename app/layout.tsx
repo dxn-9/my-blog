@@ -15,12 +15,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const postsMeta = await getPostsMeta()
 
 	return (
-		<html lang='en'>
+		<html lang='en' suppressHydrationWarning>
 			<body>
 				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
 					<main className='flex justify-center mx-auto min-h-[calc(100vh-11rem)] mt-44'>
-						<Navbar postsMeta={postsMeta} />
-						<div className='max-w-[80ch] w-full  flex flex-col relative '>
+						<div className='max-w-[80ch] w-full pl-16 flex flex-col relative '>
+							<Navbar postsMeta={postsMeta} />
 							{children}
 						</div>
 					</main>

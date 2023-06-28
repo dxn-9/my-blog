@@ -1,6 +1,7 @@
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatTitle, formatDateShort } from '@/lib/utils'
 import Link from 'next/link'
+import Container from '@/components/ui/container'
 
 export default async function Home() {
 	const posts = await getPosts()
@@ -9,16 +10,18 @@ export default async function Home() {
 			<h1 className='font-bold text-4xl'>I miei ultimi posts</h1>
 
 			<section>
-				<ul>
+				<ul className='flex flex-col gap-2 mt-[31px]'>
 					{posts.map((post) => (
 						<li key={post.metaData.slug}>
 							<Link href={`/post/${post.metaData.slug}`}>
-								<div className='p-4 bg-gray-700 m-4 flex gap-4'>
-									<p className='opacity-50'>
+								<Container
+									className='justify-start gap-3 hover:translate-x-2 hover:bg-accent hover:text-accent-foreground transition-all '
+									padding='md'>
+									<p className='opacity-40'>
 										{formatDateShort(post.metaData.date)}
 									</p>
 									<h4>{formatTitle(post.metaData.title)}</h4>
-								</div>
+								</Container>
 							</Link>
 						</li>
 					))}
