@@ -11,11 +11,13 @@ const withMDX = require('@next/mdx')({
 			[
 				require('rehype-pretty-code'),
 				{
-					dark: 'github-dark-dimmed',
-					light: 'github-light',
+					theme: { dark: 'github-dark-dimmed', light: 'github-light' },
 				},
 			],
 		],
 	},
 })
+
+// import x from 'rehype-pretty-code'
+// x({})
 module.exports = withMDX(nextConfig)
