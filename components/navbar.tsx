@@ -39,9 +39,7 @@ export default function Navbar({
 	}, [isOpen, pathname])
 
 	return (
-		<div
-			className='md:left-[-2rem] md:top-auto left-0 top-0 md:absolute fixed'
-			aria-hidden='true'>
+		<div className='md:left-[-2rem] md:top-auto left-0 top-0 md:absolute fixed'>
 			<aside className='md:w-16 w-full md:mr-10 mr-0 flex md:flex-col flex-row fixed md:h-fit h-[70px] md:bg-transparent md:border-b-0 border-b border-input  bg-background-accent/30 backdrop-blur-[2px] '>
 				<nav
 					data-state={isOpen ? 'open' : 'closed'}

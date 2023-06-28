@@ -21,7 +21,7 @@ export default async function Home() {
 				<div className='flex justify-end mt-2 gap-4'>
 					<Link href='https://daniel-lauri.dev'>
 						<Button
-							className='gap-1'
+							className='gap-1 hover:bg-accent'
 							size='sm'
 							name='homepage link'
 							aria-label='homepage link'
@@ -31,7 +31,7 @@ export default async function Home() {
 					</Link>
 					<Link href='https://github.com/dandn9' target='_blank'>
 						<Button
-							className='gap-1'
+							className='gap-1 hover:bg-accent'
 							size='sm'
 							name='github link'
 							aria-label='github link'
