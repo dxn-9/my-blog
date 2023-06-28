@@ -19,7 +19,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
 			<Link href='/'>
 				<Button
 					variant='link'
-					className='absolute bottom-full p-0 group flex items-center gap-[2px]'>
+					name='back to home link'
+					aria-label='back to home link'
+					className='md:absolute bottom-full p-0 group flex items-center gap-[2px]'>
 					<ArrowLeft
 						size={14}
 						className='group-hover:translate-x-[-2px] transition-all'

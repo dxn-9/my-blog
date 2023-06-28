@@ -11,7 +11,7 @@ const containerVariants = cva(
 				primary: 'bg-primary text-primary-foreground',
 			},
 			padding: {
-				none: 'p-0',
+				none: '',
 				sm: 'px-4 py-2',
 				md: 'px-6 py-3',
 				lg: 'px-8 py-4',

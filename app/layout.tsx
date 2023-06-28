@@ -19,8 +19,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 		<html lang='en' suppressHydrationWarning>
 			<body>
 				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
-					<main className='flex justify-center mx-auto min-h-[calc(100vh-11rem)] mt-44'>
-						<div className='max-w-[80ch] w-full pl-16 flex flex-col relative '>
+					<main className='flex justify-center mx-auto md:min-h-[calc(100vh-11rem)] min-h-[calc(100vh-2.5rem)] md:mt-44 mt-24'>
+						<div className='max-w-[80ch] w-full md:pl-16 px-1 flex flex-col md:relative '>
 							<Navbar postsMeta={postsMeta} />
 							{children}
 						</div>

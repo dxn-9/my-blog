@@ -10,7 +10,7 @@ export default function PostHeading({ post }: { post: Post }) {
 		<>
 			<h1 className='my-0'>{post.metaData.title}</h1>
 			<p className='my-1'>{formatDateLong(post.metaData.date)}</p>
-			<hr className='mt-2' />
+			<hr className='my-2' />
 		</>
 	)
 }

@@ -20,12 +20,22 @@ export default async function Home() {
 				</p>
 				<div className='flex justify-end mt-2 gap-4'>
 					<Link href='https://daniel-lauri.dev'>
-						<Button className='gap-1' size='sm' variant='secondary'>
+						<Button
+							className='gap-1'
+							size='sm'
+							name='homepage link'
+							aria-label='homepage link'
+							variant='secondary'>
 							Homepage <ExternalLink size={18} />
 						</Button>
 					</Link>
 					<Link href='https://github.com/dandn9' target='_blank'>
-						<Button className='gap-1' size='sm' variant='secondary'>
+						<Button
+							className='gap-1'
+							size='sm'
+							name='github link'
+							aria-label='github link'
+							variant='secondary'>
 							Github <Github size={18} />
 						</Button>
 					</Link>
@@ -38,9 +48,9 @@ export default async function Home() {
 						<li key={post.metaData.slug}>
 							<Link href={`/post/${post.metaData.slug}`}>
 								<Container
-									className='justify-start bg-background-accent gap-3 hover:translate-x-2 hover:bg-accent hover:text-accent-foreground transition-all '
+									className='justify-start bg-background-accent gap-3 hover:translate-x-2 hover:bg-accent hover:text-accent-foreground transition-all md:h-auto h-20  '
 									padding='md'>
-									<p className='opacity-40'>
+									<p className='opacity-40 md:text-base text-xs whitespace-nowrap'>
 										{formatDateShort(post.metaData.date)}
 									</p>
 									<h4>{formatTitle(post.metaData.title)}</h4>

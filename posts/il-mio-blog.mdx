@@ -1,10 +1,23 @@
 export const metaData = {
-	title: 'Il mio blog',
+	title: 'Il blog post nel blog',
 	description: 'Come è stato costruito e perché',
 	date: '2023-06-28T13:23:21.511Z',
 	slug: 'il-mio-blog',
 }
 
-# MDX as a Server Component
+## Hey! 👋🏼
 
-This is a demo for rendering MDX as a server component.
+Benvenuto/a sul mio blog, dove scrivo di software, tecnologia e altro.
+\
+\
+In questo primo post parlo un po' di questo sito: di come è stato costruito e perché ho scelto la stack che ho utilizzato.
+
+## React e Next.js
+
+Ho scelto **React** e **Next.js** in quanto danno un buon bilancio tra performance e DX.\
+Un fattore importante nell'area blog è il supporto di [MDX](https://mdxjs.com/) se si vuole usare un framework javascript a componenti:
+Next offre una soluzione ridicolosamente facile da integrare, [vedi qui](https://nextjs.org/docs/app/building-your-application/configuring/mdx).
+Un altro aspetto nell'ambito _blog_ è la SEO: non sarebbe accettabile utilizzare soluzioni client-side.\
+Insomma, Next.js è chiaramente un'ottima scelta per un blog, tuttavia non è stata senza difficoltà: in particolare mi sono dovuto affrontare con il nuovo paradigma di React, i **Server Components**.
+
+## Server Components

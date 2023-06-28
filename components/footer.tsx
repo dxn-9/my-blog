@@ -5,29 +5,45 @@ import Link from 'next/link'
 const Footer = () => {
 	return (
 		<footer className='border-t-input border-t bg-background-accent mt-2 min-h-[5rem] pt-5 pb-2'>
-			<div className='flex flex-col max-w-[80ch] pl-16 mx-auto text-sm'>
+			<div className='flex flex-col max-w-[80ch] md:pl-16 pl-1 mx-auto text-sm'>
 				<div>
 					<p>Contattami sui social o via email:</p>
-					<div className='flex gap-2 items-center'>
+					<div className='flex gap-2 items-center flex-wrap'>
 						<Link href='https://twitter.com/dotdaxxn' target='_blank'>
-							<Button className='p-0' variant='link'>
+							<Button
+								className='p-0'
+								name='twitter link'
+								aria-label='twitter link'
+								variant='link'>
 								Twitter
 							</Button>
 						</Link>
 						<Link href='https://github.com/dandn9' target='_blank'>
-							<Button className='p-0' variant='link'>
+							<Button
+								className='p-0'
+								name='github link'
+								aria-label='github link'
+								variant='link'>
 								Github
 							</Button>
 						</Link>
 						<Link
 							href='https://www.linkedin.com/in/daniel-lauri-0b170a240/'
 							target='_blank'>
-							<Button className='p-0' variant='link'>
+							<Button
+								className='p-0'
+								name='linkedin link'
+								aria-label='linkedin link'
+								variant='link'>
 								LinkedIn
 							</Button>
 						</Link>
 						<Link href='mailto:daniel.lauri22@gmail.com' type='email'>
-							<Button className='p-0' variant='link'>
+							<Button
+								className='p-0'
+								name='email link'
+								aria-label='email link'
+								variant='link'>
 								daniel.lauri22@gmail.com
 							</Button>
 						</Link>
