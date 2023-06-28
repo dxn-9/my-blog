@@ -7,7 +7,7 @@ const containerVariants = cva(
 	{
 		variants: {
 			variant: {
-				outline: 'bg-card text-card-foreground border border-input',
+				outline: 'bg-background-accent text-card-foreground border border-input',
 				primary: 'bg-primary text-primary-foreground',
 			},
 			padding: {

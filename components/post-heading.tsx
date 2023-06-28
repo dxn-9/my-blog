@@ -8,15 +8,9 @@ export default function PostHeading({ post }: { post: Post }) {
 
 	return (
 		<>
-			{/* <Container variant='outline'> */}
-			<h1>{post.metaData.title}</h1>
-			<p>
-				Scritto: {formatDateLong(post.metaData.date)}
-				{hasBeenUpdated && (
-					<> - Ultimo aggiornamento: {formatDateLong(post.metaData.date)}</>
-				)}
-			</p>
-			{/* </Container> */}
+			<h1 className='my-0'>{post.metaData.title}</h1>
+			<p className='my-1'>{formatDateLong(post.metaData.date)}</p>
+			<hr className='mt-2' />
 		</>
 	)
 }

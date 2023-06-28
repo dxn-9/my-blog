@@ -92,11 +92,6 @@ export default function SearchModal({
 							</CommandGroup>
 						</CommandList>
 						<CommandSeparator />
-						<div className='h-10 p-2 flex items-center'>
-							<Link href={'/'}>
-								<Home size={20} />
-							</Link>
-						</div>
 					</Command>
 				</DialogContent>
 			</Dialog>

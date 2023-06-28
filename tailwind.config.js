@@ -21,6 +21,7 @@ module.exports = {
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
+				'background-accent': 'hsl(var(--background-accent))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -79,12 +80,19 @@ module.exports = {
 					},
 					to: { transform: 'rotate(-90deg) scale(0)', opacity: 0 },
 				},
+				wave: {
+					from: {
+						transform: 'rotate(-90deg)',
+					},
+					to: { transform: 'rotate(90deg)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'spin-in-stagger': 'spin-in 0.2s ease-out var(--stagger) both',
 				'spin-out-stagger': 'spin-out 0.2s ease-out var(--stagger) both',
+				wave: 'wave 0.2s ease-out both',
 			},
 		},
 	},

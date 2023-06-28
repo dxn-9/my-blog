@@ -1,8 +1,9 @@
 import React from 'react'
 import { getPostBySlug, getPosts } from '@/lib/posts'
-import x from '@/posts/hi.mdx'
 import Link from 'next/link'
 import PostHeading from '@/components/post-heading'
+import { Button } from '@/components/ui/button'
+import { ArrowLeft } from 'lucide-react'
 
 export async function generateStaticParams() {
 	const posts = await getPosts()
@@ -15,10 +16,18 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
 	return (
 		<>
-			<Link className='p-2 bg-gray-700 w-fit absolute bottom-full' href='/'>
-				{'<'}Home
+			<Link href='/'>
+				<Button
+					variant='link'
+					className='absolute bottom-full p-0 group flex items-center gap-[2px]'>
+					<ArrowLeft
+						size={14}
+						className='group-hover:translate-x-[-2px] transition-all'
+					/>
+					<span>Home</span>
+				</Button>
 			</Link>
-			<article className='lg:prose-lg prose prose-invert mx-auto w-full max-w-[80ch] '>
+			<article className='prose dark:prose-invert w-full'>
 				<PostHeading post={Post} />
 				<Post.default />
 			</article>

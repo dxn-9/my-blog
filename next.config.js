@@ -7,7 +7,15 @@ const nextConfig = {
 
 const withMDX = require('@next/mdx')({
 	options: {
-		rehypePlugins: [[require('rehype-pretty-code'), {}]],
+		rehypePlugins: [
+			[
+				require('rehype-pretty-code'),
+				{
+					dark: 'github-dark-dimmed',
+					light: 'github-light',
+				},
+			],
+		],
 	},
 })
 module.exports = withMDX(nextConfig)
