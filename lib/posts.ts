@@ -6,13 +6,13 @@ import { toTitleCase } from '@/lib/utils'
 
 type sortFn = (post1: Post, post2: Post) => number
 
-const defaultSort: sortFn = (post1: Post, post2: Post) =>
+const sortByRecentDate: sortFn = (post1: Post, post2: Post) =>
 	post1.metaData.date > post2.metaData.date ? -1 : 1 // by default we sort the newest post first
 
 let prevPosts: null | Post[] = null
 let prevSortFn: null | sortFn = null
 
-export async function getPosts(sortFn = defaultSort): Promise<Readonly<Post[]>> {
+export async function getPosts(sortFn = sortByRecentDate): Promise<Readonly<Post[]>> {
 	if (sortFn === prevSortFn && prevPosts) {
 		// cache
 		return prevPosts

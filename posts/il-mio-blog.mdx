@@ -1,5 +1,8 @@
+import Highlighter from '@/components/markdown/highlighter'
+import Comment from '@/components/markdown/comment'
+
 export const metaData = {
-	title: 'Il blog post nel blog',
+	title: 'Il post del blog',
 	description: 'Come è stato costruito e perché',
 	date: '2023-06-28T13:23:21.511Z',
 	slug: 'il-mio-blog',
@@ -21,14 +24,14 @@ Insomma, Next.js è chiaramente un'ottima scelta per un blog, tuttavia non è st
 
 ### Server Components
 
-É stata la mia prima esperienza con i [server components](https://nextjs.org/docs/getting-started/react-essentials), e devo dire che l'ergonomicità di creare componenti come
+É stata la mia prima esperienza con i [server components](https://nextjs.org/docs/getting-started/react-essentials), e devo dire che l'ergonomia di creare componenti come
 
 ```tsx
 --- lib/posts.ts ---
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-export async function getPosts(sortFn = defaultSort): Promise<Readonly<Post[]>> {
+export async function getPosts(sortFn = sortByRecentDate): Promise<Readonly<Post[]>> {
 	const p = path.join(process.cwd(), 'posts')
 	const files = await fs.readdir(p)
 	const posts = await Promise.all(
@@ -46,4 +49,83 @@ export default async function Home(){
 }
 ```
 
-É sicuramente ottima, tuttavia la forte distinzione tra ciò che i _Client Components_ e i _Server Components_ possono fare richiedere una learning curve.
+É sicuramente ottima, tuttavia la forte distinzione tra ciò che si può fare nei _Client Components_ e nei _Server Components_ può richiedere una learning curve. \
+\
+Adesso si parla delle cose vere - **la _performance_**: la bundle size di javascript che viene mandata al client in questo sito
+(considerando che gli unici client components sono quelli per la navigazione) è
+119,9 kB (br compressed). Considerando che la velocità media di internet mondiale è intorno ai 30 Mbps (che sarebbe 3375 kB/s); di media solamente per scaricare
+il pacchetto javascript ci si impiegherebbe 35 millisecondi (escludendo tutto il networking).
+
+![Lighthouse performance](/imgs/lighthouse.png 'Lighthouse')
+
+<Highlighter type='info'>
+	Ovviamente la performance di un sito così semplice non è qualcosa di cui vantarsi nè
+	una vera metrica, tuttavia fa da buon screenshot da condividere sui social 🙈
+</Highlighter>
+
+## Tailwind
+
+Tailwind sta diventando ormai un membro permanente nella mia toolbelt di strumenti: i vantaggi sono troppi e una volta che ci
+si abitua alla sintassi discutibilmente verbosa, a mio parere in termini di velocità di sviluppo non ha rivali. \
+In particolare la community ha creato molti strumenti intorno a tailwind e grazie a librerie
+come [class variance authority](https://cva.style/docs) e [tailwind-merge](https://github.com/dcastil/tailwind-merge) rende
+scrivere Tailwind per componenti di Design Systems veramente facile.\
+\
+Guardiamo per esempio il componente 'Highlighter':
+
+```tsx
+import { cn } from '@/lib/utils'
+import { VariantProps, cva } from 'class-variance-authority'
+
+const highlighterVariants = cva(
+	'p-4 rounded-md flex items-center border justify-center [&>p]:m-0',
+	{
+		variants: {
+			type: {
+				default: 'bg-gray-500/20 border-gray-400/50',
+				info: 'bg-green-500/20 border-green-400/50 ',
+			},
+		},
+		defaultVariants: {
+			type: 'default',
+		},
+	}
+)
+
+export interface HighlighterProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		VariantProps<typeof highlighterVariants> {}
+
+const Highlighter = React.forwardRef<HTMLDivElement, HighlighterProps>(
+	({ className, type, ...props }, ref) => {
+		return (
+			<div
+				ref={ref}
+				className={cn(highlighterVariants({ className, type }))}
+				{...props}></div>
+		)
+	}
+)
+```
+
+```mdx
+<Highlighter type='info'>Informazione!</Highlighter>
+<Highlighter>Box</Highlighter>
+```
+
+<Comment>Ottengo</Comment>
+<Highlighter type='info'>Informazione!</Highlighter>
+<Highlighter>Box</Highlighter>
+
+## Others
+
+Questo è un progetto in evoluzione, ed è tutto soggetto a cambiamenti; infatti aggiornerò spesso anche questo
+articolo per riflettere i cambiamenti sul blog 😉!
+\
+\
+Tutto il codice è disponibile [qui](https://github.com/dandn9/my-blog).\
+Sentiti libero/a di prendere ispirazione/creare PR per feedback/migliorie o un semplice messaggio anche è apprezzato
+
+#### Grazie per la lettura,
+
+#### _Daniel_.
