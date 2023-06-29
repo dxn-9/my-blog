@@ -14,9 +14,36 @@ In questo primo post parlo un po' di questo sito: di come è stato costruito e p
 
 ## React e Next.js
 
-Ho scelto **React** e **Next.js** in quanto danno un buon bilancio tra performance e DX.\
+Ho scelto **React** e **Next.js** in quanto danno un buon bilancio tra performance e facilità di utilizzo.\
 Un fattore importante nell'area blog è il supporto di [MDX](https://mdxjs.com/) se si vuole usare un framework javascript a componenti:
 Next offre una soluzione ridicolosamente facile da integrare, [vedi qui](https://nextjs.org/docs/app/building-your-application/configuring/mdx).\
 Insomma, Next.js è chiaramente un'ottima scelta per un blog, tuttavia non è stata senza difficoltà: in particolare mi sono dovuto affrontare con il nuovo paradigma di React, i **Server Components**.
 
-## Server Components
+### Server Components
+
+É stata la mia prima esperienza con i [server components](https://nextjs.org/docs/getting-started/react-essentials), e devo dire che l'ergonomicità di creare componenti come
+
+```tsx
+--- lib/posts.ts ---
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
+export async function getPosts(sortFn = defaultSort): Promise<Readonly<Post[]>> {
+	const p = path.join(process.cwd(), 'posts')
+	const files = await fs.readdir(p)
+	const posts = await Promise.all(
+		files.map((file) => import(`@/posts/${file}`) as Promise<Post>)
+	)
+	return posts.sort(sortFn)
+}
+
+--- app/page.tsx ---
+export default async function Home(){
+	const posts = await getPosts()
+	return <>
+	// UI per i posts (jsx)
+	</>
+}
+```
+
+É sicuramente ottima, tuttavia la forte distinzione tra ciò che i _Client Components_ e i _Server Components_ possono fare richiedere una learning curve.

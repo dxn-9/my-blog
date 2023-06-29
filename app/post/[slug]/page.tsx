@@ -4,16 +4,29 @@ import Link from 'next/link'
 import PostHeading from '@/components/post-heading'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
+import { ResolvingMetadata } from 'next'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
 	const posts = await getPosts()
 	return posts.map((post) => ({ slug: post.metaData.slug }))
 }
 
+export async function generateMetadata(
+	{ params }: { params: { slug: string } },
+	parent: ResolvingMetadata
+) {
+	const post = await getPostBySlug(params.slug)
+	return {
+		title: post?.metaData.title,
+	}
+}
+
 export default async function Post({ params }: { params: { slug: string } }) {
 	const Post = await getPostBySlug(params.slug)
-	if (!Post) return <div>Post not found</div>
-
+	if (!Post) {
+		notFound()
+	}
 	return (
 		<>
 			<Link href='/'>

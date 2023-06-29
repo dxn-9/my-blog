@@ -18,7 +18,7 @@ export async function getPosts(sortFn = defaultSort): Promise<Readonly<Post[]>> 
 		return prevPosts
 	}
 
-	const p = path.resolve(process.cwd(), 'posts')
+	const p = path.join(process.cwd(), 'posts')
 	const files = await fs.readdir(p)
 	const posts = await Promise.all(
 		files.map((file) => import(`@/posts/${file}`) as Promise<Post>)
