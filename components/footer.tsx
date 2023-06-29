@@ -9,15 +9,6 @@ const Footer = () => {
 				<div>
 					<p>Contattami sui social o via email:</p>
 					<div className='flex gap-2 items-center flex-wrap'>
-						<Link href='https://twitter.com/dotdaxxn' target='_blank'>
-							<Button
-								className='p-0'
-								name='twitter link'
-								aria-label='twitter link'
-								variant='link'>
-								Twitter
-							</Button>
-						</Link>
 						<Link href='https://github.com/dandn9' target='_blank'>
 							<Button
 								className='p-0'
