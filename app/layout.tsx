@@ -16,7 +16,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const postsMeta = await getPostsMeta()
 
 	return (
-		<html lang='en' suppressHydrationWarning>
+		<html lang='it' suppressHydrationWarning>
 			<body>
 				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
 					<main className='flex justify-center mx-auto md:min-h-[calc(100vh-11rem)] min-h-[calc(100vh-2.5rem)] md:mt-44 mt-24'>
