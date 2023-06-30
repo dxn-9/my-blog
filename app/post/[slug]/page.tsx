@@ -19,6 +19,9 @@ export async function generateMetadata(
 	const post = await getPostBySlug(params.slug)
 	return {
 		title: post?.metaData.title,
+		openGraph: {
+			title: post?.metaData.title,
+		},
 	}
 }
 

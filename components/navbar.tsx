@@ -19,7 +19,6 @@ export default function Navbar({
 	const [isOpen, setIsOpen] = useState(true)
 	const prevScroll = useRef(0)
 	const pathname = usePathname()
-	console.log(pathname)
 
 	useEffect(() => {
 		if (!pathname.includes('post')) return
