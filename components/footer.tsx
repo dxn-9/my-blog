@@ -18,17 +18,6 @@ const Footer = () => {
 								Github
 							</Button>
 						</Link>
-						<Link
-							href='https://www.linkedin.com/in/daniel-lauri-0b170a240/'
-							target='_blank'>
-							<Button
-								className='p-0'
-								name='linkedin link'
-								aria-label='linkedin link'
-								variant='link'>
-								LinkedIn
-							</Button>
-						</Link>
 						<Link href='mailto:daniel.lauri22@gmail.com' type='email'>
 							<Button
 								className='p-0'
